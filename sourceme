@@ -1,0 +1,6 @@
+. ~/dotfiles/bash/git-prompt.sh
+. ~/dotfiles/bash/git-completion.bash
+
+
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+
