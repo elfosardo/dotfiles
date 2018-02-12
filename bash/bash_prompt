@@ -3,5 +3,6 @@ GREEN="\[\033[01;32m\]"
 RED="\[\033[01;31m\]"
 UNSET="\[\033[00m\]"
 
-PS1="[${GREEN}\u@\h ${CYAN}\W${RED}$(__git_ps1 " (%s)")${UNSET}]\$ "
+#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
+PROMPT_COMMAND='__git_ps1 "[${GREEN}\u@\h:${CYAN}\w${UNSET}]" "\\\$ "'
