@@ -3,5 +3,5 @@ GREEN="\[\033[01;32m\]"
 RED="\[\033[01;31m\]"
 UNSET="\[\033[00m\]"
 
-PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+[$CYAN`basename $VIRTUAL_ENV`$UNSET]\n}" "$GREEN\h:\W$UNSET \u\\\$ " "[%s]\n"'
+PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+[$RED`basename $VIRTUAL_ENV`$UNSET]\n}" "$GREEN\u@\h:$CYAN\W$UNSET \\\$ " "[%s]\n"'
 
