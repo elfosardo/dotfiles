@@ -1,5 +1,16 @@
-. ~/dotfiles/bash/git-env.bash
-. ~/dotfiles/bash/git-prompt.sh
-. ~/dotfiles/bash/git-completion.bash
-. ~/dotfiles/bash/bash_prompt
+# shellcheck shell=bash
+DOTFILES_DIR="${HOME}/dotfiles"
 
+for f in \
+    "${DOTFILES_DIR}/bash/git-env.bash" \
+    "${DOTFILES_DIR}/bash/git-prompt.sh" \
+    "${DOTFILES_DIR}/bash/git-completion.bash" \
+    "${DOTFILES_DIR}/bash/bash_prompt"; do
+    # shellcheck source=/dev/null
+    if [[ -f "${f}" ]]; then
+        . "${f}"
+    else
+        echo "dotfiles: missing ${f}" >&2
+    fi
+done
+unset f
