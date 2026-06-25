@@ -37,10 +37,29 @@ add_to_bashrc() {
     echo "Added source line to ${BASHRC}."
 }
 
+configure_gitignore_global() {
+    local gitignore_path="${DOTFILES_DIR}/gitignore_global"
+    local current
+    current="$(git config --global core.excludesFile 2>/dev/null || true)"
+
+    if [[ "${current}" == "${gitignore_path}" ]]; then
+        echo "Global gitignore already configured."
+        return
+    fi
+
+    if [[ -n "${current}" ]]; then
+        echo "Note: overriding existing core.excludesFile (was: ${current})."
+    fi
+
+    git config --global core.excludesFile "${gitignore_path}"
+    echo "Set global gitignore to ${gitignore_path}."
+}
+
 main() {
     echo "Installing dotfiles from ${DOTFILES_DIR}..."
     create_symlink
     add_to_bashrc
+    configure_gitignore_global
     echo "Done. Restart your shell or run: source ${BASHRC}"
 }
 
