@@ -28,7 +28,7 @@ create_symlink() {
 }
 
 add_to_bashrc() {
-    if grep -qF "${SOURCE_LINE}" "${BASHRC}" 2>/dev/null; then
+    if grep -qE "(source|\.)\s+(~|\\\$HOME|${HOME})/dotfiles/sourceme" "${BASHRC}" 2>/dev/null; then
         echo "Source line already present in ${BASHRC}."
         return
     fi
